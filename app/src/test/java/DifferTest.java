@@ -11,7 +11,7 @@ public class DifferTest {
 
     @BeforeAll
     public static void beforeAll() throws Exception {
-        String pathResultStylish = "src/test/resources/resultStylish";
+        String pathResultStylish = "src/test/resources/TestStylish";
         resultStylish = Differ.getDataFromFilePath(pathResultStylish);
     }
 

@@ -89,7 +89,7 @@ public class Differ {
         return diffElement;
     }
 
-    public static String generateResult (List<Map<String, Object>> diffs) {
+    public static String generateResult(List<Map<String, Object>> diffs) {
         StringBuilder result = new StringBuilder("{\n");
 
         for (Map<String, Object> diff : diffs) {
@@ -111,3 +111,4 @@ public class Differ {
         return result.toString();
     }
 }
+

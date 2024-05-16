@@ -3,6 +3,7 @@ plugins {
     application
     distribution
     checkstyle
+    jacoco
 }
 
 group = "hexlet.code"
@@ -31,4 +32,8 @@ tasks.getByName("run", JavaExec::class) {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.jacocoTestReport {
+    reports { xml.required.set(true) }
 }

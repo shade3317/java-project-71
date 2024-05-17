@@ -26,7 +26,7 @@ public class Differ {
         Map<String, Object> mapFile2 = Parser.parse(content2, fileType2);
 
         List<Map<String, Object>> diffs = generateDiffs(mapFile1, mapFile2);
-        return generateResult(diffs);
+        return Formatter.generateResult(diffs, format);
     }
 
     public static List<Map<String, Object>> generateDiffs(Map<String, Object> file1, Map<String, Object> file2) {
@@ -67,28 +67,6 @@ public class Differ {
         }
 
         return diffElement;
-    }
-
-    public static String generateResult(List<Map<String, Object>> diffs) {
-        StringBuilder result = new StringBuilder("{\n");
-
-        for (Map<String, Object> diff : diffs) {
-            String status = String.valueOf(diff.get("status"));
-            switch (status) {
-                case "ADDED"   -> result.append(String.format("  + %s: %s\n",
-                                  diff.get("key"), diff.get("value")));
-                case "REMOVED" -> result.append(String.format("  - %s: %s\n",
-                                  diff.get("key"), diff.get("value")));
-                case "EQUAL"   -> result.append(String.format("    %s: %s\n",
-                                  diff.get("key"), diff.get("value")));
-                case "CHANGED" -> result.append(String.format("  - %s: %s\n  + %s: %s\n",
-                                  diff.get("key"), diff.get("value1"), diff.get("key"), diff.get("value2")));
-                default        -> throw new RuntimeException("Unknown status");
-            }
-        }
-        result.append("}");
-
-        return result.toString();
     }
 }
 

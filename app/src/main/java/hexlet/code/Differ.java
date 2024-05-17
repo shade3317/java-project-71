@@ -1,6 +1,4 @@
 package hexlet.code;
-import hexlet.code.Utils;
-import hexlet.code.Parser;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -8,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeSet;
-
-import java.io.IOException;
 
 
 public class Differ {

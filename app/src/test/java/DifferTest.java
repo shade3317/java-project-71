@@ -8,22 +8,38 @@ import org.junit.jupiter.api.Test;
 
 
 public class DifferTest {
-    private static String resultStylish;
+    private static String resultStylish1_2;
+    private static String resultStylish3_4;
 
 
     @BeforeAll
     public static void beforeAll() throws Exception {
-        String pathResultStylish = "src/test/resources/TestStylish";
-        resultStylish = Utils.getDataFromFilePath(pathResultStylish);
+        String pathResultStylish1_2 = "src/test/resources/TestStylish1_2";
+        String pathResultStylish3_4 = "src/test/resources/TestStylish3_4";
+
+        resultStylish1_2 = Utils.getDataFromFilePath(pathResultStylish1_2);
+        resultStylish3_4 = Utils.getDataFromFilePath(pathResultStylish3_4);
     }
 
     @Test
-    public void generateTest() throws Exception {
-        String pathJson1 = "src/test/resources/file1.json";
-        String pathJson2 = "src/test/resources/file2.json";
-        String pathYml1  = "src/test/resources/file1.yml";
-        String pathYml2  = "src/test/resources/file2.yml";
-        assertThat(Differ.generate(pathJson1, pathJson2, "stylish")).isEqualTo(resultStylish);
-        assertThat(Differ.generate(pathYml1,  pathYml2,  "stylish")).isEqualTo(resultStylish);
+    public void generateTestStylish() throws Exception {
+        // Test json
+        String pathFile1_json = "src/test/resources/file1.json";
+        String pathFile2_json = "src/test/resources/file2.json";
+        String pathFile3_json = "src/test/resources/file3.json";
+        String pathFile4_json = "src/test/resources/file4.json";
+
+        assertThat(Differ.generate(pathFile1_json, pathFile2_json, "stylish")).isEqualTo(resultStylish1_2);
+        assertThat(Differ.generate(pathFile3_json, pathFile4_json, "stylish")).isEqualTo(resultStylish3_4);
+
+
+        // Test yml
+        String pathFile1_yml  = "src/test/resources/file1.yml";
+        String pathFile2_yml  = "src/test/resources/file2.yml";
+        String pathFile3_yml  = "src/test/resources/file3.yml";
+        String pathFile4_yml  = "src/test/resources/file4.yml";
+
+        assertThat(Differ.generate(pathFile1_yml,  pathFile2_yml,  "stylish")).isEqualTo(resultStylish1_2);
+        assertThat(Differ.generate(pathFile3_yml,  pathFile4_yml,  "stylish")).isEqualTo(resultStylish3_4);
     }
 }

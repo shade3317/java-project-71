@@ -1,8 +1,6 @@
 package hexlet.code;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import hexlet.code.Utils;
+import hexlet.code.Parser;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -10,8 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeSet;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
@@ -24,29 +20,17 @@ public class Differ {
         CHANGED
     }
 
-    public static String generate(String filepath1, String filepath2, String format) throws Exception {
-        String content1 = getDataFromFilePath(filepath1);
-        String content2 = getDataFromFilePath(filepath2);
+    public static String generate(String filePath1, String filePath2, String format) throws Exception {
+        String content1  = Utils.getDataFromFilePath(filePath1);
+        String content2  = Utils.getDataFromFilePath(filePath2);
+        String fileType1 = Utils.getFileType(filePath1);
+        String fileType2 = Utils.getFileType(filePath2);
 
-        Map<String, Object> mapFile1 = parseJson(content1);
-        Map<String, Object> mapFile2 = parseJson(content2);
+        Map<String, Object> mapFile1 = Parser.parse(content1, fileType1);
+        Map<String, Object> mapFile2 = Parser.parse(content2, fileType2);
 
-        List<Map<String, Object>> result = generateDiffs(mapFile1, mapFile2);
-        return generateResult(result);
-    }
-
-    public static String getDataFromFilePath(String filePath) throws IOException {
-        Path path = Paths.get(filePath);
-        if (!Files.exists(path)) {
-            throw new IOException("File '" + path + "' does not exist");
-        }
-
-        return Files.readString(path);
-    }
-
-    public static Map<String, Object> parseJson(String content) throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(content, Map.class);
+        List<Map<String, Object>> diffs = generateDiffs(mapFile1, mapFile2);
+        return generateResult(diffs);
     }
 
     public static List<Map<String, Object>> generateDiffs(Map<String, Object> file1, Map<String, Object> file2) {

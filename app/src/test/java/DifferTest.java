@@ -1,4 +1,5 @@
 import hexlet.code.Differ;
+import hexlet.code.Utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeAll;
@@ -12,13 +13,16 @@ public class DifferTest {
     @BeforeAll
     public static void beforeAll() throws Exception {
         String pathResultStylish = "src/test/resources/TestStylish";
-        resultStylish = Differ.getDataFromFilePath(pathResultStylish);
+        resultStylish = Utils.getDataFromFilePath(pathResultStylish);
     }
 
     @Test
     public void generateTest() throws Exception {
-        String path1 = "src/test/resources/file1.json";
-        String path2 = "src/test/resources/file2.json";
-        assertThat(Differ.generate(path1, path2, "stylish")).isEqualTo(resultStylish);
+        String pathJson1 = "src/test/resources/file1.json";
+        String pathJson2 = "src/test/resources/file2.json";
+        String pathYml1  = "src/test/resources/file1.yml";
+        String pathYml2  = "src/test/resources/file2.yml";
+        assertThat(Differ.generate(pathJson1, pathJson2, "stylish")).isEqualTo(resultStylish);
+        assertThat(Differ.generate(pathYml1,  pathYml2,  "stylish")).isEqualTo(resultStylish);
     }
 }

@@ -16,6 +16,10 @@ public class Differ {
         CHANGED
     }
 
+    public static String generate(String filePath1, String filePath2) throws Exception {
+        return generate(filePath1, filePath2, "stylish");
+    }
+
     public static String generate(String filePath1, String filePath2, String format) throws Exception {
         String content1  = Utils.getDataFromFilePath(filePath1);
         String content2  = Utils.getDataFromFilePath(filePath2);

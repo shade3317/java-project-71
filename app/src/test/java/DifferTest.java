@@ -18,17 +18,6 @@ public class DifferTest {
     private static final String pathResultPlain3_4   = "src/test/resources/TestPlain3_4";
     private static final String pathResultJson3_4    = "src/test/resources/TestJson3_4";
 
-    private static final String pathFile1_json = "src/test/resources/file1.json";
-    private static final String pathFile2_json = "src/test/resources/file2.json";
-    private static final String pathFile3_json = "src/test/resources/file3.json";
-    private static final String pathFile4_json = "src/test/resources/file4.json";
-
-    private static final String pathFile1_yml  = "src/test/resources/file1.yml";
-    private static final String pathFile2_yml  = "src/test/resources/file2.yml";
-    private static final String pathFile3_yml  = "src/test/resources/file3.yml";
-    private static final String pathFile4_yml  = "src/test/resources/file4.yml";
-
-
 
     @BeforeAll
     public static void beforeAll() throws Exception {
@@ -40,24 +29,40 @@ public class DifferTest {
 
     @Test
     public void generateTestStylish() throws Exception {
+        String pathFile1_json = "src/test/resources/file1.json";
+        String pathFile2_json = "src/test/resources/file2.json";
+        String pathFile3_json = "src/test/resources/file3.json";
+        String pathFile4_json = "src/test/resources/file4.json";
         assertThat(Differ.generate(pathFile1_json, pathFile2_json, "stylish")).isEqualTo(resultStylish1_2);
         assertThat(Differ.generate(pathFile3_json, pathFile4_json, "stylish")).isEqualTo(resultStylish3_4);
 
+        String pathFile1_yml  = "src/test/resources/file1.yml";
+        String pathFile2_yml  = "src/test/resources/file2.yml";
+        String pathFile3_yml  = "src/test/resources/file3.yml";
+        String pathFile4_yml  = "src/test/resources/file4.yml";
         assertThat(Differ.generate(pathFile1_yml,  pathFile2_yml,  "stylish")).isEqualTo(resultStylish1_2);
         assertThat(Differ.generate(pathFile3_yml,  pathFile4_yml,  "stylish")).isEqualTo(resultStylish3_4);
     }
 
     @Test
     public void generateTestPlain() throws Exception {
+        String pathFile3_json = "src/test/resources/file3.json";
+        String pathFile4_json = "src/test/resources/file4.json";
         assertThat(Differ.generate(pathFile3_json, pathFile4_json, "plain")).isEqualTo(resultPlain3_4);
 
+        String pathFile3_yml  = "src/test/resources/file3.yml";
+        String pathFile4_yml  = "src/test/resources/file4.yml";
         assertThat(Differ.generate(pathFile3_yml,  pathFile4_yml,  "plain")).isEqualTo(resultPlain3_4);
     }
 
     @Test
     public void generateTestJson() throws Exception {
+        String pathFile3_json = "src/test/resources/file3.json";
+        String pathFile4_json = "src/test/resources/file4.json";
         assertThat(Differ.generate(pathFile3_json, pathFile4_json, "json")).isEqualTo(resultJson3_4);
 
+        String pathFile3_yml  = "src/test/resources/file3.yml";
+        String pathFile4_yml  = "src/test/resources/file4.yml";
         assertThat(Differ.generate(pathFile3_yml,  pathFile4_yml,  "json")).isEqualTo(resultJson3_4);
     }
 }

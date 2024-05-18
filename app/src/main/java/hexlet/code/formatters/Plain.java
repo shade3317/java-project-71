@@ -14,7 +14,9 @@ public class Plain {
                         diff.get("key"), complexValue(diff.get("value"))));
                 case "REMOVED" -> result.append(String.format("Property '%s' was removed\n",
                         diff.get("key")));
-                case "EQUAL"   -> {}
+                case "EQUAL"   -> {
+
+                }
                 case "CHANGED" -> result.append(String.format("Property '%s' was updated. From %s to %s\n",
                         diff.get("key"), complexValue(diff.get("value1")), complexValue(diff.get("value2"))));
                 default        -> throw new RuntimeException("Unknown status");

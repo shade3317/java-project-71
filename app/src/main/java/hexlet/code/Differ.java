@@ -21,44 +21,45 @@ public class Differ {
     }
 
     public static String generate(String filePath1, String filePath2, String format) throws Exception {
-        String content1  = Utils.getDataFromFilePath(filePath1);
-        String content2  = Utils.getDataFromFilePath(filePath2);
-        String fileType1 = Utils.getFileType(filePath1);
-        String fileType2 = Utils.getFileType(filePath2);
+        String contentFile1  = Utils.getDataFromFilePath(filePath1);
+        String contentFile2  = Utils.getDataFromFilePath(filePath2);
+        String fileType1     = Utils.getFileType(filePath1);
+        String fileType2     = Utils.getFileType(filePath2);
 
-        Map<String, Object> mapFile1 = Parser.parse(content1, fileType1);
-        Map<String, Object> mapFile2 = Parser.parse(content2, fileType2);
+        Map<String, Object> mapContentFile1 = Parser.parse(contentFile1, fileType1);
+        Map<String, Object> mapContentFile2 = Parser.parse(contentFile2, fileType2);
 
-        List<Map<String, Object>> diffs = generateDiffs(mapFile1, mapFile2);
+        List<Map<String, Object>> diffs = generateDiffs(mapContentFile1, mapContentFile2);
         return Formatter.generateResult(diffs, format);
     }
 
-    public static List<Map<String, Object>> generateDiffs(Map<String, Object> file1, Map<String, Object> file2) {
-        var result = new ArrayList<Map<String, Object>>();
+    public static List<Map<String, Object>> generateDiffs(Map<String, Object> mapContentFile1,
+                                                          Map<String, Object> mapContentFile2) {
+        var diffs = new ArrayList<Map<String, Object>>();
 
         var keys = new TreeSet<String>();
-        keys.addAll(file1.keySet());
-        keys.addAll(file2.keySet());
+        keys.addAll(mapContentFile1.keySet());
+        keys.addAll(mapContentFile2.keySet());
 
         for (String key : keys) {
-            var diffElement = generateDiffElement(file1, file2, key);
-            result.add(diffElement);
+            var diffElement = generateDiffElement(mapContentFile1, mapContentFile2, key);
+            diffs.add(diffElement);
         }
 
-        return result;
+        return diffs;
     }
 
-    public static Map<String, Object> generateDiffElement(Map<String, Object> file1, Map<String, Object> file2,
-                                                          String key) {
+    public static Map<String, Object> generateDiffElement(Map<String, Object> mapContentFile1,
+                                                          Map<String, Object> mapContentFile2, String key) {
         Map<String, Object> diffElement = new LinkedHashMap<>();
-        var value1 = file1.get(key);
-        var value2 = file2.get(key);
+        var value1 = mapContentFile1.get(key);
+        var value2 = mapContentFile2.get(key);
 
         diffElement.put("key", key);
-        if (!file1.containsKey(key)) {
+        if (!mapContentFile1.containsKey(key)) {
             diffElement.put("status", Status.ADDED);
             diffElement.put("value",  value2);
-        } else if (!file2.containsKey(key)) {
+        } else if (!mapContentFile2.containsKey(key)) {
             diffElement.put("status", Status.REMOVED);
             diffElement.put("value",  value1);
         } else if (Objects.equals(value1, value2)) {

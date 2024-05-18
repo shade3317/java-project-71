@@ -33,25 +33,25 @@ Display a hint on the screen:
 ```
 make run-help
 ```
-<img src="https://github.com/shade3317/ImagesForProjects/blob/master/java-project-71/Help.PNG" width="200" height="200" alt="">
+<img src="https://github.com/shade3317/ImagesForProjects/blob/master/java-project-71/Help.PNG" width="200" height="100" alt="">
 
 Working with json, yml files, format - stylish (default):
 ```
 make run-json
 make run-yml
 ```
-<img src="https://github.com/shade3317/ImagesForProjects/blob/master/java-project-71/Stylish.PNG" width="200" height="200" alt="">
+<img src="https://github.com/shade3317/ImagesForProjects/blob/master/java-project-71/Stylish.PNG" width="150" height="350" alt="">
 
 Working with json, yml files, format - plain:
 ```
 make run-json-fPlain
 make run-yml-fPlain
 ```
-<img src="https://github.com/shade3317/ImagesForProjects/blob/master/java-project-71/Plain.PNG" width="200" height="200" alt="">
+<img src="https://github.com/shade3317/ImagesForProjects/blob/master/java-project-71/Plain.PNG" width="250" height="150" alt="">
 
 Working with json, yml files, format - json:
 ```
 make run-json-fJson
 make run-yml-fJson
 ```
-<img src="https://github.com/shade3317/ImagesForProjects/blob/master/java-project-71/Json.PNG" width="200" height="200" alt="">
+<img src="https://github.com/shade3317/ImagesForProjects/blob/master/java-project-71/Json.PNG" width="500" height="50" alt="">

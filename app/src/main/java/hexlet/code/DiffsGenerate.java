@@ -1,6 +1,12 @@
 package hexlet.code;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.TreeSet;
+
 
 public class DiffsGenerate {
     public static List<Map<String, Object>> generateDiffs(Map<String, Object> mapContentFile1,
@@ -44,3 +50,4 @@ public class DiffsGenerate {
         return diffElement;
     }
 }
+

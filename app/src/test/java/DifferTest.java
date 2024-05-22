@@ -8,7 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
-public class DifferTest {
+public final class DifferTest {
     private static final String PATH_RESULT_STYLISH = "src/test/resources/TestStylish3_4";
     private static final String PATH_RESULT_PLAIN   = "src/test/resources/TestPlain3_4";
     private static final String PATH_RESULT_JSON    = "src/test/resources/TestJson3_4";
@@ -33,7 +33,7 @@ public class DifferTest {
 
         assertThat(Differ.generate(pathFile3, pathFile4)).isEqualTo(resultStylish);
         assertThat(Differ.generate(pathFile3, pathFile4, "stylish")).isEqualTo(resultStylish);
-        assertThat(Differ.generate(pathFile3, pathFile4, "plain"  )).isEqualTo(resultPlain);
-        assertThat(Differ.generate(pathFile3, pathFile4, "json"   )).isEqualTo(resultJson);
+        assertThat(Differ.generate(pathFile3, pathFile4, "plain")).isEqualTo(resultPlain);
+        assertThat(Differ.generate(pathFile3, pathFile4, "json")).isEqualTo(resultJson);
     }
 }

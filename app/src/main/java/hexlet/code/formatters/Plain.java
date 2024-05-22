@@ -27,7 +27,7 @@ public class Plain {
     }
 
     public static String complexValue(Object value) {
-        if (value instanceof Object[] || value instanceof List<?> || value instanceof Map<?, ?>) {
+        if (value instanceof List<?> || value instanceof Map<?, ?>) {
             return "[complex value]";
         } else if (value == null) {
             return "null";

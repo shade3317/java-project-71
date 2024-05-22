@@ -10,16 +10,19 @@ import java.io.IOException;
 public class Utils {
     public static String getDataFromFilePath(String filePath) throws IOException {
         Path path = Paths.get(filePath);
-        if (!Files.exists(path)) {
-            throw new IOException("File '" + path + "' does not exist");
-        }
-
         return Files.readString(path);
     }
 
     public static String getFileType(String filePath) {
         int index = filePath.lastIndexOf('.');
-        return index > 0 ? filePath.substring(index + 1) : "";
+        if (index > 0) {
+            return filePath.substring(index + 1);
+        }
+        throw new RuntimeException("File type not found");
+    }
+
+    public static String getFilePath(String fileName, String fileType) {
+        return "src/test/resources/" + fileName + "." + fileType;
     }
 }
 

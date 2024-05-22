@@ -1,12 +1,10 @@
 package hexlet.code;
 
-
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import java.util.concurrent.Callable;
 import picocli.CommandLine.Parameters;
 import picocli.CommandLine.Option;
-
 
 
 @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "gendiff 0.0",
@@ -21,13 +19,6 @@ public final class App implements Callable<Integer> {
             defaultValue = "stylish",
             description = "output format [default: ${DEFAULT-VALUE}]")
     private String format;
-
-    @Option(names = {"-h", "--help"}, usageHelp = true, description = "Show this help message and exit.")
-    private boolean helpRequested;
-    @Option(names = {"-V", "--version"}, description = "Print version information and exit.")
-    private boolean version;
-
-
 
     public static void main(String[] args) {
         int exitCode = new CommandLine(new App()).execute(args);

@@ -18,7 +18,7 @@ public class Differ {
         Map<String, Object> mapContentFile1 = Parser.parse(contentFile1, fileType1);
         Map<String, Object> mapContentFile2 = Parser.parse(contentFile2, fileType2);
 
-        List<Map<String, Object>> diffs = DiffGenerator.generateDiffs(mapContentFile1, mapContentFile2);
+        List<Map<String, Object>> diffs = DiffGenerator.generateDiff(mapContentFile1, mapContentFile2);
         return Formatter.generateResult(diffs, format);
     }
 }

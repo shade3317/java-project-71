@@ -9,9 +9,9 @@ import java.util.TreeSet;
 
 
 public class DiffGenerator {
-    public static List<Map<String, Object>> generateDiffs(Map<String, Object> mapContentFile1,
-                                                          Map<String, Object> mapContentFile2) {
-        var diffs = new ArrayList<Map<String, Object>>();
+    public static List<Map<String, Object>> generateDiff(Map<String, Object> mapContentFile1,
+                                                         Map<String, Object> mapContentFile2) {
+        var diff = new ArrayList<Map<String, Object>>();
 
         var keys = new TreeSet<String>();
         keys.addAll(mapContentFile1.keySet());
@@ -19,10 +19,10 @@ public class DiffGenerator {
 
         for (String key : keys) {
             var diffElement = generateDiffElement(mapContentFile1, mapContentFile2, key);
-            diffs.add(diffElement);
+            diff.add(diffElement);
         }
 
-        return diffs;
+        return diff;
     }
 
     public static Map<String, Object> generateDiffElement(Map<String, Object> mapContentFile1,

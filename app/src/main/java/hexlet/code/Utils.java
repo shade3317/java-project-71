@@ -20,9 +20,5 @@ public class Utils {
         }
         throw new RuntimeException("File type not found");
     }
-
-    public static String getFilePath(String fileName, String fileType) {
-        return "src/test/resources/" + fileName + "." + fileType;
-    }
 }
 

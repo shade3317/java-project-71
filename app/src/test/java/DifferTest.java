@@ -28,12 +28,16 @@ public final class DifferTest {
     @ParameterizedTest
     @ValueSource(strings = {"json", "yml"})
     public void generateTest(String fileType) throws Exception {
-        var pathFile3 = Utils.getFilePath("file3", fileType);
-        var pathFile4 = Utils.getFilePath("file4", fileType);
+        var pathFile3 = getFilePath("file3", fileType);
+        var pathFile4 = getFilePath("file4", fileType);
 
         assertThat(Differ.generate(pathFile3, pathFile4)).isEqualTo(resultStylish);
         assertThat(Differ.generate(pathFile3, pathFile4, "stylish")).isEqualTo(resultStylish);
         assertThat(Differ.generate(pathFile3, pathFile4, "plain")).isEqualTo(resultPlain);
         assertThat(Differ.generate(pathFile3, pathFile4, "json")).isEqualTo(resultJson);
+    }
+
+    public static String getFilePath(String fileName, String fileType) {
+        return "src/test/resources/" + fileName + "." + fileType;
     }
 }

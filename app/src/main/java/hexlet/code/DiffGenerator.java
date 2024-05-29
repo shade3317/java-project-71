@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.TreeSet;
 
 
-public class DiffsGenerate {
+public class DiffGenerator {
     public static List<Map<String, Object>> generateDiffs(Map<String, Object> mapContentFile1,
                                                           Map<String, Object> mapContentFile2) {
         var diffs = new ArrayList<Map<String, Object>>();
